@@ -1,0 +1,99 @@
+meta {
+  name: cadastrarComentario
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/comentarios
+  body: json
+  auth: none
+}
+
+body:json {
+  [
+    {
+      "alimento": {
+        "nome": "Quinoa com Legumes",
+        "receita": {
+          "nome": "Receita de Quinoa com Legumes",
+          "link": "https://www.sabornamesa.com.br/receitas/quinoa-com-legumes",
+          "imagem": "https://www.sabornamesa.com.br/media/k2/items/cache/f8f5a5c93f2e9736606c42c7b426a970_XL.jpg"
+        },
+        "tabela": {
+          "url": "https://www.sabornamesa.com.br/tabela-nutricional-quinoa"
+        },
+        "imagem": "https://www.sabornamesa.com.br/media/k2/items/cache/f8f5a5c93f2e9736606c42c7b426a970_XL.jpg"
+      },
+      "texto": "A quinoa com legumes é uma excelente opção rica em proteínas!"
+    },
+  
+  
+    {
+      "alimento": {
+        "nome": "Salada de Abacate com Tomate",
+        "receita": {
+          "nome": "Receita de Salada de Abacate com Tomate",
+          "link": "https://www.novaprospectiva.com.br/salada-abacate-com-tomate",
+          "imagem": "https://www.novaprospectiva.com.br/wp-content/uploads/2020/06/salada-abacate.jpg"
+        },
+        "tabela": {
+          "url": "https://www.novaprospectiva.com.br/tabela-nutricional-salada-abacate"
+        },
+        "imagem": "https://www.novaprospectiva.com.br/wp-content/uploads/2020/06/salada-abacate.jpg"
+      },
+      "texto": "Deliciosa e cheia de benefícios antioxidantes!"
+    },
+  
+  
+    {
+      "alimento": {
+        "nome": "Peito de Frango Grelhado",
+        "receita": {
+          "nome": "Receita de Peito de Frango Grelhado",
+          "link": "https://www.tudogostoso.com.br/receita/peito-de-frango-grelhado",
+          "imagem": "https://img.itdg.com.br/tdg/images/recipes/000/228/935/323931/323931_original.jpg"
+        },
+        "tabela": {
+          "url": "https://www.tudogostoso.com.br/tabela-nutricional-frango-grelhado"
+        },
+        "imagem": "https://img.itdg.com.br/tdg/images/recipes/000/228/935/323931/323931_original.jpg"
+      },
+      "texto": "O peito de frango grelhado é uma fonte incrível de proteína magra."
+    },
+  
+  
+    {
+      "alimento": {
+        "nome": "Smoothie de Banana e Morango",
+        "receita": {
+          "nome": "Receita de Smoothie de Banana e Morango",
+          "link": "https://www.cybercook.com.br/receitas/smoothie-de-morango-com-banana",
+          "imagem": "https://img.cybercook.com.br/receitas/1145/smoothie-de-morango-com-banana_1_xxxl.jpg"
+        },
+        "tabela": {
+          "url": "https://www.cybercook.com.br/tabela-nutricional-smoothie"
+        },
+        "imagem": "https://img.cybercook.com.br/receitas/1145/smoothie-de-morango-com-banana_1_xxxl.jpg"
+      },
+      "texto": "Ideal para um lanche saudável e refrescante!"
+    },
+  
+  
+    {
+      "alimento": {
+        "nome": "Sopa de Abóbora",
+        "receita": {
+          "nome": "Receita de Sopa de Abóbora",
+          "link": "https://www.guiadacozinha.com.br/receitas/sopa-de-abobora",
+          "imagem": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sopa_de_ab%C3%B3bora.jpg"
+        },
+        "tabela": {
+          "url": "https://www.guiadacozinha.com.br/tabela-nutricional-sopa-abobora"
+        },
+        "imagem": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sopa_de_ab%C3%B3bora.jpg"
+      },
+      "texto": "Uma sopa reconfortante e nutritiva para os dias frios."
+    }
+  ]
+}

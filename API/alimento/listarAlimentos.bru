@@ -1,0 +1,46 @@
+meta {
+  name: listarAlimentos
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:3000/alimentos
+  body: json
+  auth: none
+}
+
+body:json {
+  [
+    {
+      "nome": "Quinoa com Legumes",
+      "receita": "67b3b9185bce31c3d0ff5093",
+      "tabela": "67b3b9255bce31c3d0ff509e",
+      "imagem": "https://www.sabornamesa.com.br/media/k2/items/cache/f8f5a5c93f2e9736606c42c7b426a970_XL.jpg"
+    },
+    {
+      "nome": "Salada de Abacate com Tomate",
+      "receita": "a2d3b9f8a4b7c0e1d5f8e3b4",
+      "tabela": "67b3b9255bce31c3d0ff509f",
+      "imagem": "https://www.novaprospectiva.com.br/wp-content/uploads/2020/06/salada-abacate.jpg"
+    },
+    {
+      "nome": "Peito de Frango Grelhado",
+      "receita": "67b3b9185bce31c3d0ff5095",
+      "tabela": "67b3b9255bce31c3d0ff50a0",
+      "imagem": "https://img.itdg.com.br/tdg/images/recipes/000/228/935/323931/323931_original.jpg"
+    },
+    {
+      "nome": "Smoothie de Banana e Morango",
+      "receita": "67b3b9185bce31c3d0ff5096",
+      "tabela": "67b3b9255bce31c3d0ff50a1",
+      "imagem": "https://img.cybercook.com.br/receitas/1145/smoothie-de-morango-com-banana_1_xxxl.jpg"
+    },
+    {
+      "nome": "Sopa de Abóbora",
+      "receita": "67b3b9185bce31c3d0ff5097",
+      "tabela": "67b3b9255bce31c3d0ff50a2",
+      "imagem": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sopa_de_ab%C3%B3bora.jpg"
+    }
+  ]
+}
