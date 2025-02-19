@@ -9,9 +9,15 @@ const AlimentoEspecificado = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Busca os dados do alimento no backend
-       api.get(`/alimentos/${alimento}`)
-      .then(response => setDadosAlimento(response.data))
+    api.get('/alimentos')
+      .then(response => {
+        const alimentoFiltrado = response.data.find(item => item.nome === alimento);
+        if (alimentoFiltrado) {
+          setDadosAlimento(alimentoFiltrado);
+        } else {
+          console.warn("Alimento não encontrado");
+        }
+      })
       .catch(error => console.error(error));
   }, [alimento]);
 
