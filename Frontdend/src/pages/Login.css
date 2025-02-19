@@ -1,0 +1,53 @@
+/* Login.css */
+body {
+    background-color: #065F11; /* Verde escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(37, 169, 53, 0.5); /* Verde claro com transparência */
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+    width: 300px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h2 {
+    color: white;
+    font-size: 24px;
+}
+
+label {
+    color: white;
+    font-size: 16px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    background-color: rgb(221, 221, 221); /* Cinza claro */
+}
+
+button {
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    background-color: #5F7C3A; /* Verde médio */
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4a612d; /* Verde mais escuro ao passar o mouse */
+}

@@ -1,0 +1,77 @@
+/* ReceitasSalvas.css */
+body {
+    background-color: #065F11; /* Verde escuro */
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: white;
+    font-size: 24px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    background-color: rgb(221, 221, 221); /* Cinza claro */
+    width: 70%;
+}
+
+button {
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    background-color: #5F7C3A; /* Verde médio */
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4a612d; /* Verde mais escuro ao passar o mouse */
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+    width: 200px;
+}
+
+.card img {
+    width: 150px;
+    height: 150px;
+}
+
+.card a {
+    display: block;
+    margin-top: 10px;
+    background-color: #28a745; /* Verde claro */
+    color: white;
+    padding: 10px;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+.card a:hover {
+    background-color: #218838; /* Verde mais escuro ao passar o mouse */
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+}
