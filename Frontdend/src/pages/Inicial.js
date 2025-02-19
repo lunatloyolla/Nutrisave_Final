@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from '../services/api'; // Importe o serviço api
 import './Inicial.css';
 
 const Inicial = () => {
+  const [alimentos, setAlimentos] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Busca os alimentos mais pesquisados no backend
+    api.get("/alimentos")
+      .then(response => setAlimentos(response.data))
+      .catch(error => console.error(error));
+  }, []);
 
   const handleAlimentoClick = (alimento) => {
     navigate(`/alimento/${alimento}`);
@@ -25,11 +34,12 @@ const Inicial = () => {
       </div>
 
       <div className="content">
-        <div className="alimentos">
-          <img src="assets/cupuaçu.svg" alt="Cupuaçu" />
-          <button onClick={() => handleAlimentoClick('Cupuaçu')}>Cupuaçu</button>
-        </div>
-        {/* Repetir para outros alimentos */}
+        {alimentos.map((alimento) => (
+          <div key={alimento._id} className="alimentos">
+            <img src={alimento.imagem} alt={alimento.nome} />
+            <button onClick={() => handleAlimentoClick(alimento.nome)}>{alimento.nome}</button>
+          </div>
+        ))}
       </div>
 
       <button onClick={() => navigate('/salvos')}>Receitas Salvas</button>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import api from '../services/api'; // Importe o serviço api
 import './Avaliacao.css';
 
 const Avaliacao = () => {
@@ -8,9 +9,13 @@ const Avaliacao = () => {
   const navigate = useNavigate();
 
   const handlePublicar = () => {
-    // Simulação de publicação de comentário
-    alert('Comentário publicado!');
-    navigate(`/alimento/${alimento}`);
+    // Envia o comentário para o backend
+    api.post('/comentarios', { alimento, comentario })
+      .then(() => {
+        alert('Comentário publicado!');
+        navigate(`/alimento/${alimento}`);
+      })
+      .catch(error => console.error(error));
   };
 
   return (

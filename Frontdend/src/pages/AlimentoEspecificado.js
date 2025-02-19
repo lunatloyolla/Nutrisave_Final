@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api'; // Importe o serviço api
 import './AlimentoEspecificado.css';
 
 const AlimentoEspecificado = () => {
@@ -9,7 +9,8 @@ const AlimentoEspecificado = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`/alimentos/${alimento}`)
+    // Busca os dados do alimento no backend
+    api.get(`/alimentos/${alimento}`)
       .then(response => setDadosAlimento(response.data))
       .catch(error => console.error(error));
   }, [alimento]);
@@ -28,8 +29,8 @@ const AlimentoEspecificado = () => {
 
       <section>
         <div className="CardAlimento">
-          <img src={`assets/${alimento}.svg`} alt={alimento} />
-          <h3>{alimento}</h3>
+          <img src={dadosAlimento.imagem} alt={dadosAlimento.nome} />
+          <h3>{dadosAlimento.nome}</h3>
         </div>
         <div className="InfoAlimento">
           <table>

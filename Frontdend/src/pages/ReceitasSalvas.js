@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from '../services/api'; // Importe o serviço api
 import './ReceitasSalvas.css';
 
 const ReceitasSalvas = () => {
+  const [receitas, setReceitas] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Busca as receitas salvas no backend
+    api.get('/receitas/salvas')
+      .then(response => setReceitas(response.data))
+      .catch(error => console.error(error));
+  }, []);
 
   return (
     <div>
@@ -17,12 +26,13 @@ const ReceitasSalvas = () => {
       </header>
 
       <section>
-        <div className="card">
-          <img src="assets/mousse.svg" alt="Mousse de Cupuaçu" />
-          <p>Mousse de Cupuaçu</p>
-          <a href="https://www.tudogostoso.com.br/receita/77491-creme-de-cupuacu.html">Ver Receita</a>
-        </div>
-        {/* Repetir para outras receitas */}
+        {receitas.map((receita) => (
+          <div key={receita._id} className="card">
+            <img src={receita.imagem} alt={receita.nome} />
+            <p>{receita.nome}</p>
+            <a href={receita.link}>Ver Receita</a>
+          </div>
+        ))}
       </section>
 
       <footer>
