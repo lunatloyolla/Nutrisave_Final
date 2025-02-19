@@ -22,11 +22,12 @@ class comentarioController {
     }
 
     static async cadastrarComentario(req, res) {
-        const novocomentario = req.body
+        const novocomentario = req.body;
         try {
-            res.status(201).json({ message: "criado com sucesso", tabela: novocomentario, receita: novocomentario })
+            const comentarioCriado = await comentario.create(novocomentario);
+            res.status(201).json({ message: "Comentário criado com sucesso", comentario: comentarioCriado });
         } catch (erro) {
-            res.status(500).json({ message: `${erro.message} - falha ao cadastrar comentario` });
+            res.status(500).json({ message: `${erro.message} - falha ao cadastrar comentário`});
         }
     }
 
