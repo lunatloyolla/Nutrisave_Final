@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import api from '../services/api'; // Importe o serviço api
+import api from '../services/api'; // Importe o serviço API
 import './AlimentoEspecificado.css';
 
 const AlimentoEspecificado = () => {
@@ -33,22 +33,12 @@ const AlimentoEspecificado = () => {
           <h3>{dadosAlimento.nome}</h3>
         </div>
         <div className="InfoAlimento">
-          <table>
-            <thead>
-              <tr>
-                <th>Componente</th>
-                <th>Quantidade (100g)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(dadosAlimento.componentes).map(([componente, quantidade]) => (
-                <tr key={componente}>
-                  <td>{componente}</td>
-                  <td>{quantidade}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <h3>Tabela Nutricional</h3>
+          <img 
+            src={dadosAlimento.tabela} 
+            alt={`Tabela Nutricional de ${dadosAlimento.nome}`} 
+            className="TabelaNutricional"
+          />
         </div>
       </section>
 
