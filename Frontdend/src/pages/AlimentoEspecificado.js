@@ -10,7 +10,7 @@ const AlimentoEspecificado = () => {
 
   useEffect(() => {
     // Busca os dados do alimento no backend
-    api.get(`/alimentos/${alimento}`)
+       api.get(`/alimentos/${alimento}`)
       .then(response => setDadosAlimento(response.data))
       .catch(error => console.error(error));
   }, [alimento]);
