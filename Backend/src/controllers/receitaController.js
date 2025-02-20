@@ -49,6 +49,25 @@ class receitaController {
             res.status(500).json({ message: `${erro.message} - falha na exclusão` })
         }
     }
+
+    static async salvarReceita(req, res) {
+        try {
+          const { nome, link, imagem } = req.body;
+          const novaReceita = await receita.create({ nome, link, imagem, salva: true });
+          res.status(201).json(novaReceita);
+        } catch (erro) {
+          res.status(500).json({ message: `${erro.message} - falha ao salvar receita` });
+        }
+      }
+
+      static async ReceitasSalvas(req, res) {
+        try {
+          const receitasSalvas = await receita.find({ salva: true });
+          res.status(200).json(receitasSalvas);
+        } catch (error) {
+          res.status(500).json({ message: `${error.message} - falha ao buscar receitas salvas` });
+        }
+      };
 }
 
 export default  receitaController 

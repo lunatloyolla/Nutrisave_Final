@@ -1,6 +1,5 @@
-/* Login.css */
 body {
-    background-color: #065F11; /* Verde escuro */
+    background-color: #065F11; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +8,7 @@ body {
 }
 
 .container {
-    background-color: rgba(37, 169, 53, 0.5); /* Verde claro com transparência */
+    background-color: rgba(37, 169, 53, 0.5); 
     padding: 20px;
     border-radius: 25px;
     text-align: center;
@@ -36,18 +35,18 @@ input {
     padding: 10px;
     border-radius: 25px;
     border: none;
-    background-color: rgb(221, 221, 221); /* Cinza claro */
+    background-color: rgb(221, 221, 221); 
 }
 
 button {
     padding: 10px;
     border-radius: 25px;
     border: none;
-    background-color: #5F7C3A; /* Verde médio */
+    background-color: #5F7C3A; 
     color: white;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #4a612d; /* Verde mais escuro ao passar o mouse */
+    background-color: #4a612d; 
 }

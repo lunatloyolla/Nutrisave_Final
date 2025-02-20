@@ -8,7 +8,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // Simulação de autenticação
     if (email && password) {
       navigate('/inicial');
     } else {

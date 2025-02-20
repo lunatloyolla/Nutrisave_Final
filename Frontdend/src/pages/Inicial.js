@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../services/api'; // Importe o serviço api
+import api from '../services/api'; 
 import './Inicial.css';
+import lupa from './assets/lupa.svg'
+import folha from './assets/folha.svg'
 
 const Inicial = () => {
   const [alimentos, setAlimentos] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Busca os alimentos mais pesquisados no backend
     api.get("/alimentos")
       .then(response => setAlimentos(response.data))
       .catch(error => console.error(error));
@@ -23,9 +24,9 @@ const Inicial = () => {
       <div className="inlineDiv">
         <input placeholder="Pesquise uma receita..." />
         <button>
-          <img src="assets/image1.svg" alt="Lupa" />
+          <img src={lupa} alt="Lupa" />
         </button>
-        <img src="assets/folha.svg" alt="Logo" />
+        <img src={folha} alt="Logo" />
       </div>
 
       <div className="FlexDiv">

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import api from '../services/api'; // Importe o serviço api
+import api from '../services/api'; 
 import './Avaliacao.css';
+import lupa from './assets/lupa.svg'
+import folha from './assets/folha.svg'
 
 const Avaliacao = () => {
   const { alimento } = useParams();
@@ -9,7 +11,7 @@ const Avaliacao = () => {
   const navigate = useNavigate();
 
   const handlePublicar = () => {
-    // Envia o comentário para o backend
+  
     api.post('/comentarios', { alimento, comentario })
       .then(() => {
         alert('Comentário publicado!');
@@ -23,9 +25,9 @@ const Avaliacao = () => {
       <header>
         <input placeholder="Pesquise uma receita..." />
         <button>
-          <img src="assets/image1.svg" alt="Lupa" />
+          <img src={lupa} alt="Lupa" />
         </button>
-        <img src="assets/folha.svg" alt="Logo" />
+        <img src={folha} alt="Logo" />
       </header>
 
       <section>

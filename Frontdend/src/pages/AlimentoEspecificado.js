@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import api from '../services/api'; // Serviço API
+import api from '../services/api'; 
 import './AlimentoEspecificado.css';
+import lupa from './assets/lupa.svg'
+import folha from './assets/folha.svg'
 
 const AlimentoEspecificado = () => {
   const { alimento } = useParams();
@@ -13,7 +15,6 @@ const AlimentoEspecificado = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Buscar todos os alimentos
         const alimentosResponse = await api.get('/alimentos');
         const alimentoEncontrado = alimentosResponse.data.find(item => item.nome === alimento);
 
@@ -23,13 +24,11 @@ const AlimentoEspecificado = () => {
         }
 
         setDadosAlimento(alimentoEncontrado);
-
-        // Buscar tabela nutricional correspondente
+        
         const tabelasResponse = await api.get('/tabelas');
         const tabelaNutricional = tabelasResponse.data.find(tabela => tabela._id === alimentoEncontrado.tabela);
         setDadosTabela(tabelaNutricional);
 
-        // Buscar a receita correspondente
         const receitasResponse = await api.get('/receitas');
         const receitaEncontrada = receitasResponse.data.find(receita => receita._id === alimentoEncontrado.receita);
         setDadosReceita(receitaEncontrada);
@@ -42,6 +41,22 @@ const AlimentoEspecificado = () => {
     fetchData();
   }, [alimento]);
 
+  const handleSalvarReceita = async () => {
+    try {
+      const receitaSalva = {
+        nome: dadosReceita.nome,
+        link: dadosReceita.link,
+        imagem: dadosReceita.imagem,
+      };
+
+      await api.post('/receitas/salvar', receitaSalva);
+      alert("Receita salva com sucesso!");
+    } catch (error) {
+      console.error("Erro ao salvar receita:", error);
+      alert("Erro ao salvar receita.");
+    }
+  };
+
   if (!dadosAlimento) return <div>Carregando...</div>;
 
   return (
@@ -49,9 +64,9 @@ const AlimentoEspecificado = () => {
       <header>
         <input placeholder="Pesquise uma receita..." /> 
         <button>
-        <img src="./assets/image1.svg" alt="Lupa" />
+          <img src={lupa} alt="Lupa" />
         </button>
-        <img src="./assets/folha.svg" alt="Logo" />
+        <img src={folha} alt="Logo" />
       </header>
 
       <section>
@@ -72,9 +87,14 @@ const AlimentoEspecificado = () => {
         <button onClick={() => navigate('/inicial')}>Voltar</button>
         <button onClick={() => navigate(`/avaliacao/${alimento}`)}>Avaliar Receita</button>
         {dadosReceita && (
-          <button onClick={() => window.open(dadosReceita.link, '_blank')}>
-            Ver Receita
-          </button>
+          <>
+            <button onClick={() => window.open(dadosReceita.link, '_blank')}>
+              Ver Receita
+            </button>
+            <button onClick={handleSalvarReceita}>
+              Salvar Receita
+            </button>
+          </>
         )}
       </footer>
     </div>

@@ -3,7 +3,6 @@ import conectaNaDatabase from './config/dbConnect.js'
 import routes from './routes/index.js'
 import cors from 'cors'
 
-
 const conexao = await conectaNaDatabase()
 
 conexao.on("error", (erro) => {
@@ -14,12 +13,13 @@ conexao.once("open", () =>{
     console.log("conexao com o banco feita com sucesso")
 })
 
-const corsOptions = {
-    origin: "http://localhost:3000"
-}
-
 const app = express()
-app.use(cors(corsOptions))
+app.use(cors({
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    allowedHeaders: ["Content-Type", "Authorization"], 
+  }));
+
 routes(app)
 
 export default app

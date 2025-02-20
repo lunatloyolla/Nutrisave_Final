@@ -5,8 +5,6 @@ import user from "./userRoute.js"
 import tabela from "./tabelaRoute.js"
 import comentario from "./comentarioRoute.js"
 
-
-
 const routes = (app) => {
     app.route('/').get((req, res) =>
         res.status(200).send('Bem vindo ao node.js'))

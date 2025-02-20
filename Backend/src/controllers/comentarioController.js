@@ -12,22 +12,25 @@ class comentarioController {
 
     static async listarComentarioPorId(req, res) {
         try {
-            const userEncontrado = await user.findById(comentario.user);
-            const comentarioCompleto = { ...comentario, user: { ...userEncontrado._doc }};
-            const comentarioCriado = await comentario.create(comentarioCompleto);
-            res.status(201).json({message: "comentario cadastrado com sucesso", comentario: comentarioCriado});
+            const comentarioEncontrado = await comentario.findById(req.params.id);
+            if (!comentarioEncontrado) {
+                return res.status(404).json({ message: "Comentário não encontrado" });
+            }
+            const userEncontrado = await user.findById(comentarioEncontrado.user);
+            const comentarioCompleto = { ...comentarioEncontrado._doc, user: { ...userEncontrado._doc } };
+    
+            res.status(200).json(comentarioCompleto);
         } catch (error) {
-            res.status(500).json({message: `${error.message} - Falha ao cadastrar comentario`});
+            res.status(500).json({ message: '${error.message} - Falha ao buscar comentário'});
         }
     }
 
     static async cadastrarComentario(req, res) {
-        const novocomentario = req.body;
         try {
-            const comentarioCriado = await comentario.create(novocomentario);
-            res.status(201).json({ message: "Comentário criado com sucesso", comentario: comentarioCriado });
+            const novoComentario = await comentario.create(req.body);
+            res.status(201).json({ message: "Comentário cadastrado com sucesso", comentario: novoComentario });
         } catch (erro) {
-            res.status(500).json({ message: `${erro.message} - falha ao cadastrar comentário`});
+            res.status(500).json({ message: '${erro.message} - falha ao cadastrar comentário' });
         }
     }
 
@@ -50,6 +53,7 @@ class comentarioController {
             res.status(500).json({ message: `${erro.message} - falha na exclusão` })
         }
     }
+    
 }
 
 
